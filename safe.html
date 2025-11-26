@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safeguard SOS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #ef4444;
+      --accent: #fb923c;
+      --bg: #f8fafc;
+      --dark: #0f172a;
+      --muted: #475569;
+      --radius: 12px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body { background: var(--bg); color: var(--dark); }
+
+    /* NAVBAR */
+    .navbar {
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .navbar .container {
+      width: 90%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-weight: 700; font-size: 1.5rem; }
+    .logo span { color: var(--primary); }
+    .navbar nav a {
+      text-decoration: none;
+      color: var(--muted);
+      margin: 0 10px;
+      font-weight: 500;
+    }
+    .navbar nav a:hover { color: var(--primary); }
+    .cta-btn {
+      background: var(--primary);
+      color: white;
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      margin: 60px auto;
+      gap: 40px;
+    }
+    .hero-content h1 { font-size: 2.5rem; }
+    .highlight { color: var(--primary); }
+    .hero-content p { margin: 20px 0; color: var(--muted); }
+    .features-mini span {
+      color: var(--accent);
+      font-weight: 600; margin-right: 10px;
+    }
+    .hero-image img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    /* SOS BUTTON */
+    .sos-section {
+      text-align: center;
+      padding: 60px 20px;
+      background: white;
+      border-radius: 20px;
+      width: 85%;
+      margin: 50px auto;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .sos-button {
+      background: linear-gradient(145deg, var(--primary), var(--accent));
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(239,68,68,0.4);
+      animation: pulse 2s infinite;
+      transition: 0.3s;
+    }
+    .sos-button:hover { transform: scale(1.05); }
+    .sos-button.activated { background: #16a34a; box-shadow: 0 0 20px rgba(34,197,94,0.6); }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.4); }
+      70% { box-shadow: 0 0 0 25px rgba(239,68,68,0); }
+      100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+    }
+
+    /* LOCATION */
+    .location-status {
+      display: flex;
+      justify-content: center;
+      margin-top: 60px;
+    }
+    .location-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      padding: 20px 30px;
+      width: 85%;
+    }
+    .location-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .status-tag {
+      background: #22c55e;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+    .location-info p { margin: 6px 0; color: var(--muted); }
+    .location-buttons button {
+      margin-right: 10px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      background: #e2e8f0;
+    }
+    .stop-btn { background: var(--primary); color: white; }
+    .privacy-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    /* CONTACTS + GUIDELINES */
+    .emergency-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      width: 90%;
+      margin: 60px auto;
+    }
+    .contacts, .guidelines {
+      flex: 1;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      padding: 20px;
+    }
+
+    .add-btn {
+      float: right;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .contact-list { margin-top: 50px; }
+
+    .contact-card {
+      background: #fff7ed;
+      border-left: 4px solid var(--accent);
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .contact-info strong { display: block; }
+    .contact-info p { margin-top: 3px; color: var(--dark); }
+
+    .card-actions button {
+      margin-left: 6px;
+      padding: 5px 8px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      background: white;
+      cursor: pointer;
+    }
+
+    .edit-input {
+      width: 100%;
+      margin-bottom: 6px;
+      padding: 6px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+    }
+
+    /* GUIDELINES */
+    .guideline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .guideline {
+      padding: 10px;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+    }
+    .guideline.high { background: var(--primary); }
+    .guideline.medium { background: var(--accent); }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background: var(--dark);
+      color: white;
+      margin-top: 60px;
+    }
+
+    
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero, .emergency-section { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">🛡️ Safeguard<span>SOS</span></div>
+      <nav>
+        <a href="#sos">SOS</a>
+        <a href="#location">Location</a>
+        <a href="#contacts">Contacts</a>
+        <a href="#guidelines">Guidelines</a>
+      </nav>
+      <button class="cta-btn">Get Help</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Your Safety is Our <span class="highlight">Priority</span></h1>
+      <p>Advanced emergency response system for high-risk environments. Get instant help when you need it most.</p>
+      <div class="features-mini">
+        <span>🕓 24/7 Monitoring</span>
+        <span>📡 GPS Tracking</span>
+        <span>🤝 Team Coordination</span>
+      </div>
+    </div>
+    <div class="hero-image">
+        <a href="equipment.html" class="equipment-button">
+           <img src="https://images.unsplash.com/photo-1606248897732-2e90a36bba9f?q=80&w=800"
+         alt="Safety equipment">
+
+        <span class="equip-label">🦺 Safety Equipment</span>
+        </a>
+    </div>
+
+  </section>
+
+  <!-- SOS SECTION -->
+  <section id="sos" class="sos-section">
+    <h2>Emergency SOS</h2>
+    <p>Press the button below for immediate emergency assistance.</p>
+    <button class="sos-button">SOS</button>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="location" class="location-status">
+    <div class="location-card">
+      <div class="location-header">
+        <h3>📍 Location Status</h3>
+        <span class="status-tag">Sharing</span>
+      </div>
+      <div class="location-info">
+        <p><strong>Coordinates:</strong> <span id="coords">--</span></p>
+        <p><strong>Accuracy:</strong> ±5 meters</p>
+        <p><strong>Current Location:</strong> Construction Site A, Zone 3, Building 7</p>
+        <p><strong>Last Updated:</strong> <span id="time">--</span></p>
+      </div>
+      <div class="location-buttons">
+        <button onclick="getLocation()">⟳ Refresh</button>
+        <button>📤 Share Now</button>
+        <button class="stop-btn">⛔ Stop</button>
+      </div>
+      <p class="privacy-note">🔒 Location data is only shared with designated emergency contacts and not stored permanently.</p>
+    </div>
+  </section>
+
+  <!-- CONTACTS + GUIDELINES -->
+  <section class="emergency-section">
+
+    <!-- CONTACTS -->
+    <div id="contacts" class="contacts">
+      <h3>📞 Emergency Contacts</h3>
+      <button class="add-btn">+ Add Contact</button>
+
+      <div class="contact-list">
+
+        <div class="contact-card">
+          <div class="contact-info">
+            <strong>Emergency Services</strong>
+            <p>911</p>
+          </div>
+          <div class="card-actions">
+            <button class="call-btn">📞</button>
+            <button class="msg-btn">💬</button>
+            <button class="edit-btn">✏️</button>
+            <button class="delete-btn">🗑️</button>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-info">
+            <strong>Site Supervisor</strong>
+            <p>(555) 123-6527</p>
+          </div>
+          <div class="card-actions">
+            <button class="call-btn">📞</button>
+            <button class="msg-btn">💬</button>
+            <button class="edit-btn">✏️</button>
+            <button class="delete-btn">🗑️</button>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-info">
+            <strong>Safety Coordinator</strong>
+            <p>(555) 987-6543</p>
+          </div>
+          <div class="card-actions">
+            <button class="call-btn">📞</button>
+            <button class="msg-btn">💬</button>
+            <button class="edit-btn">✏️</button>
+            <button class="delete-btn">🗑️</button>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-info">
+            <strong>Emergency Contact</strong>
+            <p>(555) 456-7890</p>
+          </div>
+          <div class="card-actions">
+            <button class="call-btn">📞</button>
+            <button class="msg-btn">💬</button>
+            <button class="edit-btn">✏️</button>
+            <button class="delete-btn">🗑️</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GUIDELINES -->
+    <div id="guidelines" class="guidelines">
+      <h3>🦺 Safety Guidelines</h3>
+      <div class="guideline-grid">
+        <div class="guideline high">🔴 Always Wear PPE</div>
+        <div class="guideline high">🟠 Check In Regularly</div>
+        <div class="guideline high">🚪 Know Emergency Exits</div>
+        <div class="guideline medium">⚠️ Report Hazards Immediately</div>
+        <div class="guideline medium">💧 Stay Hydrated</div>
+        <div class="guideline high">👬 Use Buddy System</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 Safeguard SOS | Designed for emergency response efficiency</p>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    /* SOS Button animation */
+    const sosButton = document.querySelector('.sos-button');
+    sosButton.addEventListener('click', () => {
+      sosButton.textContent = 'Alert Sent!';
+      sosButton.classList.add('activated');
+      setTimeout(() => {
+        sosButton.textContent = 'SOS';
+        sosButton.classList.remove('activated');
+      }, 3000);
+    });
+
+    /* Location */
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          document.getElementById('coords').textContent =
+            `${position.coords.latitude.toFixed(4)}, ${position.coords.longitude.toFixed(4)}`;
+          document.getElementById('time').textContent = new Date().toLocaleTimeString();
+        }, () => {
+          document.getElementById('coords').textContent = 'Location unavailable';
+        });
+      } else {
+        document.getElementById('coords').textContent = 'Geolocation not supported';
+      }
+    }
+
+    /* CONTACT EDITING SYSTEM */
+
+    function makeContactEditable(card) {
+      const nameElem = card.querySelector("strong");
+      const numberElem = card.querySelector("p");
+
+      const oldName = nameElem.textContent;
+      const oldNumber = numberElem.textContent;
+
+      const nameInput = document.createElement("input");
+      nameInput.className = "edit-input";
+      nameInput.value = oldName;
+
+      const numberInput = document.createElement("input");
+      numberInput.className = "edit-input";
+      numberInput.value = oldNumber;
+
+      const info = card.querySelector(".contact-info");
+      info.innerHTML = "";
+      info.appendChild(nameInput);
+      info.appendChild(numberInput);
+
+      const actions = card.querySelector(".card-actions");
+      actions.innerHTML = `
+        <button class="save-btn">💾</button>
+        <button class="cancel-btn">✖️</button>
+      `;
+
+      actions.querySelector(".save-btn").addEventListener("click", () => {
+        const newName = nameInput.value.trim();
+        const newNumber = numberInput.value.trim();
+        if (!newName || !newNumber) return alert("Fields cannot be empty.");
+
+        info.innerHTML = `<strong>${newName}</strong><p>${newNumber}</p>`;
+        restoreActions(card);
+      });
+
+      actions.querySelector(".cancel-btn").addEventListener("click", () => {
+        info.innerHTML = `<strong>${oldName}</strong><p>${oldNumber}</p>`;
+        restoreActions(card);
+      });
+    }
+
+    function restoreActions(card) {
+      card.querySelector(".card-actions").innerHTML = `
+        <button class="call-btn">📞</button>
+        <button class="msg-btn">💬</button>
+        <button class="edit-btn">✏️</button>
+        <button class="delete-btn">🗑️</button>
+      `;
+      assignButtonEvents(card);
+    }
+
+    function assignButtonEvents(card) {
+      card.querySelector(".edit-btn")?.addEventListener("click", () => makeContactEditable(card));
+      card.querySelector(".delete-btn")?.addEventListener("click", () => {
+        if (confirm("Delete this contact?")) card.remove();
+      });
+    }
+
+    document.querySelectorAll(".contact-card").forEach(card => assignButtonEvents(card));
+
+    document.querySelector(".add-btn").addEventListener("click", () => {
+      const name = prompt("Enter contact name:");
+      const number = prompt("Enter phone number:");
+      if (!name || !number) return;
+
+      const newCard = document.createElement("div");
+      newCard.className = "contact-card";
+      newCard.innerHTML = `
+        <div class="contact-info">
+          <strong>${name}</strong>
+          <p>${number}</p>
+        </div>
+        <div class="card-actions">
+          <button class="call-btn">📞</button>
+          <button class="msg-btn">💬</button>
+          <button class="edit-btn">✏️</button>
+          <button class="delete-btn">🗑️</button>
+        </div>
+      `;
+
+      document.querySelector(".contact-list").appendChild(newCard);
+      assignButtonEvents(newCard);
+    });
+
+  </script>
+
+</body>
+</html>

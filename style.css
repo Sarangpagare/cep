@@ -1,0 +1,152 @@
+/* ------------------------------------
+   GLOBAL
+------------------------------------ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #000000; /* solid black */
+}
+
+/* ------------------------------------
+   AUTH CARD
+------------------------------------ */
+.auth-container {
+  background: #111; /* near black */
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 1rem;
+
+  border: 1px solid #d4af37; /* gold border */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #facc15; /* warm gold */
+  font-weight: 700;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: #d4af37; /* gold */
+  font-weight: 600;
+}
+
+/* ------------------------------------
+   TABS
+------------------------------------ */
+.tabs {
+  display: flex;
+  margin-bottom: 1.5rem;
+  border-radius: 999px;
+  background: #222;
+  padding: 0.25rem;
+}
+
+.tab-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #cfcfcf;
+  transition: 0.2s ease;
+}
+
+.tab-btn.active {
+  background: #d4af37; /* gold */
+  color: black;
+}
+
+/* ------------------------------------
+   FORMS
+------------------------------------ */
+.form {
+  display: none;
+}
+
+.form.active {
+  display: block;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+  color: #e5e5e5;
+}
+
+input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px solid #444;
+  background: #1a1a1a;
+  color: white;
+  font-size: 0.95rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #d4af37;
+  box-shadow: 0 0 0 2px rgba(212,175,55,0.3);
+}
+
+/* ------------------------------------
+   BUTTONS
+------------------------------------ */
+button[type="submit"],
+#logout-btn {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: #d4af37; /* gold button */
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.25rem;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #b98c20; /* darker gold */
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* ------------------------------------
+   MESSAGE TEXT
+------------------------------------ */
+.message {
+  margin-top: 0.75rem;
+  min-height: 1.2rem;
+  font-size: 0.9rem;
+}
+
+.message.error {
+  color: #ef4444;
+}
+
+.message.success {
+  color: #22c55e;
+}
+
